@@ -1,0 +1,52 @@
+<div class="card card-body">
+    <img [src]="crib.image" alt="" height="200px;">
+    <div class="caption">
+        <div *ngIf="!crib.showDetails">
+            <h4>
+                <span class="badge badge-primary">
+              {{ crib.type }}
+            </span>
+            </h4>
+            <h3>
+                <i class="fas fa-dollar-sign"></i> {{ crib.price | currency:'USD':true }}
+            </h3>
+            <h4>
+                <i class="fa fa-tags"></i> {{ crib.address }}
+            </h4>
+
+            <hr>
+
+            <button class="btn btn-sm btn-success" *ngIf="!crib.showDetails" (click)="crib.showDetails = !crib.showDetails">
+            Details
+          </button>
+
+        </div>
+
+        <div *ngIf="crib.showDetails">
+            <div class="details">
+                <h4>
+                    <span class="badge badge-primary">
+                Beds: {{ crib.bedrooms }}
+              </span>
+                    <br>
+                    <span class="badge badge-primary">
+                Baths: {{ crib.bathrooms }}
+              </span>
+                    <br>
+                    <span class="badge badge-primary">
+                SqFt: {{ crib.area }}
+              </span>
+                    <br>
+                </h4>
+
+                <p>{{ crib.description }}</p>
+
+                <hr>
+
+                <button class="btn btn-sm btn-danger" (click)="crib.showDetails = !crib.showDetails">
+              Close
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
